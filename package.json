@@ -1,0 +1,28 @@
+{
+  "name": "hotelproject",
+  "version": "1.0.0",
+  "description": "this is Hotel landing page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eidsid/Hotel.git"
+  },
+  "author": "Eid Sayed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eidsid/Hotel/issues"
+  },
+  "homepage": "https://github.com/eidsid/Hotel#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-webp": "^4.0.0"
+  }
+}

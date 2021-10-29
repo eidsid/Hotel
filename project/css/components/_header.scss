@@ -1,0 +1,23 @@
+// header {
+//     height: 100%;
+//     width: 100%;
+//     background-color: $hf;
+//     nav {
+//         ul {
+//             li {
+//                 a {
+//                     color: $textcolor-dark;
+//                     transition: .2s all ease-in-out;
+//                 }
+//                 &:hover {
+//                     a {
+//                         color: $textcolor;
+//                         @include flex(row);
+//                         @include Stransation(0.5)
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// @include medi {}
