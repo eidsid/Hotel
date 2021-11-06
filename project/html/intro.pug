@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title intro page 
+        include ./component/links 
+    body 
+        .intro 
+            h1  How I build this website 
+            p this is a smbile project ,created with Pug-js, CSS3, and some JavaScript
+            h2 i have used gulp-js toole for
+            ol 
+                li Compile and convert SCSS files into a CSS file and add prefixes to fit the old browsers and reduce their size
+                li Compile, convert Pug-js files into  pretty HTML file 
+                li  Reduce JS file size 
+            a(href="./html/index.html") Open the WebSite 
