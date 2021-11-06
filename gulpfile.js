@@ -1,59 +1,40 @@
-// list dependences
-const { src, dest, watch, series } = require('gulp');
-const sass = require('gulp-sass'),
-    prefix = require('gulp-autoprefixer'),
-    minify = require('gulp-clean-css'),
-    terser = require('gulp-terser'),
-    imgmin = require('gulp-imagemin'),
-    imgwebp = require('gulp-webp');
+const { task } = require('gulp');
 
-// create functions
+const gulp = require('gulp'),
+    pug = require('gulp-pug'),
+    concat = require('gulp-concat'),
+    cssnano = require('gulp-cssnano'),
+    prfix = require('gulp-autoprefixer'),
+    // minjs = require('gulp-terser'),
+    sass = require('gulp-sass')(require('sass'));
 
-// scss
-compilescss => {
-    return src('./project/css/*.scss')
-        .pipe(sass())
-        .pipe(prefix('last 2 versions'))
-        .pipe(minify())
-        .pipe(dest('./dist/css'))
-}
 
-//js
-jsmin => {
-    return src('./project/js/main.js')
-        .pipe(terser())
-        .pipe(dest('./dist/js'))
-}
+//html task
+gulp.task('html', () => {
+    return gulp.src('./project/html/*.pug')
+        .pipe(pug({ pretty: true }))
+        .pipe(gulp.dest('./dist/html'))
+})
 
-//images
-imgsoptimize => {
-    return src('./project/images/*.{jpg,png}')
-        .pipe(imgmin(
-            [imgmin.mozjpeg({ quality: 80, progressive: true }),
-                imgmin.optipng({ optimizationLevel: 2 }),
-            ]
-        )).pipe(dest('./dist/imgs'))
-}
+//css
+gulp.task('css', () => {
+    return gulp.src('./project/css/style.scss', { sourcemaps: true })
+        .pipe(prfix('last 2 version'))
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(cssnano())
+        .pipe(gulp.dest('dist/css', { sourcemaps: '.' }));
+})
 
-//webp images
-webpImages => {
-    return src('./dist/imgs/*.{jpg,png}')
-        .pipe(webpImages())
-        .pipe(dest('./dist/imgs'))
-}
+//js task
+// gulp.task('js', () => {
+//     gulp.src('./project/js/*.js')
+//         .pipe(gulp.dest('./dist/js'))
+// })
 
-watchtask => {
-        watch('./project/css/*.scss', compilescss);
-        watch('./project/js/*.js', jsmin);
-        watch('./project/images/*.{jpg,png}', imgsoptimize);
-        watch('./dist/imgs/*.{jpg,png}', webpImages);
-    }
-    //defult gulp
+gulp.task('watch', function() {
+    // gulp.watch('./project/js/*.js', gulp.series('js'))
+    gulp.watch('./project/html/**/*.pug', gulp.series('html'))
+    gulp.watch('./project/css/**/*.scss', gulp.series('css'))
+});
 
-exports.default = series(
-    compilescss,
-    jsmin,
-    imgsoptimize,
-    webpImages,
-    watchtask
-)
+gulp.task('default', gulp.series('watch'));

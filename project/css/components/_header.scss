@@ -1,23 +1,119 @@
-// header {
-//     height: 100%;
-//     width: 100%;
-//     background-color: $hf;
-//     nav {
-//         ul {
-//             li {
-//                 a {
-//                     color: $textcolor-dark;
-//                     transition: .2s all ease-in-out;
-//                 }
-//                 &:hover {
-//                     a {
-//                         color: $textcolor;
-//                         @include flex(row);
-//                         @include Stransation(0.5)
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-// @include medi {}
+header {
+    background-color: aquamarine;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $header_color;
+    height: $header_height;
+    z-index: 999999999;
+    @include transation(0.3s);
+    @include flex(row, space-around, center);
+    .logo {
+        font-weight: bold;
+        i {
+            &:nth-child(1) {
+                color: aquamarine;
+            }
+            &:nth-child(2) {
+                color: rgb(123, 199, 174);
+            }
+            &:nth-child(3) {
+                color: rgb(89, 241, 0);
+            }
+            &:nth-child(4) {
+                color: rgb(199, 187, 255);
+            }
+            &:nth-child(5) {
+                color: rgb(255, 167, 51);
+            }
+        }
+    }
+    gap: 50%;
+    .menubtn {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        i {
+            display: none;
+            transform: scale(1.5);
+            opacity: 0.8;
+        }
+    }
+    nav {
+        ul {
+            @include flex(row, space-around, center);
+            gap: 1rem;
+            li {
+                position: relative;
+                width: max-content;
+                list-style-type: none;
+                a {
+                    color: $textcolor-dark;
+                    @include transation(0.3s);
+                }
+                &::after {
+                    content: "";
+                    width: 0%;
+                    height: 0.1rem;
+                    background-color: aquamarine;
+                    position: absolute;
+                    left: 0;
+                    bottom: -0.2rem;
+                    transform-origin: left;
+                    @include transation(0.5s);
+                }
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                    a {
+                        color: $textcolor;
+                    }
+                }
+            }
+        }
+    }
+    &.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+@include mobile {
+    header {
+        height: $header_height-mobile;
+        .menubtn {
+            i.active {
+                display: block;
+            }
+        }
+        .logo {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+        nav {
+            display: none;
+            ul {
+                flex-direction: column;
+                margin-top: 10vh;
+                gap: 2rem;
+            }
+        }
+        &.active {
+            height: 100vh;
+            nav {
+                display: block;
+            }
+        }
+    }
+}
+
+@include medi {
+    .header {
+        gap: 0;
+    }
+}

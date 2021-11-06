@@ -1,0 +1,41 @@
+.discovery {
+    overflow-x: hidden;
+    min-height: 70vh;
+    width: 100%;
+    margin: 1rem;
+    @include flex(row, center, center);
+    img {
+        height: 100%;
+        width: 50%;
+    }
+    .discovery_content {
+        h2 {
+            text-align: center;
+            margin: 1rem 0 1rem 0;
+            span {
+                padding: 1rem;
+                color: rgba(153, 205, 50, 0.767);
+            }
+        }
+        .prographs {
+            @include flex(row, center, center);
+            gap: 1rem;
+            padding: 1rem;
+        }
+    }
+}
+
+@include medi {
+    .discovery {
+        flex-direction: column;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@include mobile {
+    .discovery>.discovery_content>.prographs {
+        flex-direction: column;
+    }
+}

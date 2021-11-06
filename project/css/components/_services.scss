@@ -1,0 +1,50 @@
+.services {
+    min-height: 100vh;
+    background-color: $textcolor-dark;
+    color: rgb(0, 0, 0);
+    padding: 2rem 1rem;
+    width: 100%;
+    h1 {
+        width: fit-content;
+        margin: 1rem auto;
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -15%;
+            left: 35%;
+            width: 30%;
+            height: 0.2rem;
+            background-color: rgb(10, 3, 48);
+        }
+    }
+    p {
+        max-width: 350px;
+        font-size: 0.9rem;
+        margin: 3rem auto;
+        text-align: center;
+    }
+    .icons {
+        width: 100%;
+        @include flex(row, center, center);
+        flex-wrap: wrap;
+        gap: 1rem;
+        .icon {
+            height: 9rem;
+            width: 7rem;
+            padding: 0.1rem;
+            padding-top: 1.5rem;
+            @include flex(column, center, center);
+            filter: blur(0.7px);
+            @include transation(0.3s);
+            &:hover {
+                filter: blur(0px);
+                cursor: pointer;
+                transform: scale(1.3);
+            }
+            img {
+                width: 50px;
+            }
+        }
+    }
+}

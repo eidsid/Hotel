@@ -1,3 +1,10 @@
-body {
-    color: aliceblue;
-}
+@import './components/verable';
+@import './components/reset';
+@import './components/header';
+@import './components/banner';
+@import './components/discovery';
+@import './components/offer';
+@import './components/services';
+@import './components/activites';
+@import './components/contact';
+@import './components/footer';

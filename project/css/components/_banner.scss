@@ -1,0 +1,101 @@
+.banner {
+    margin-top: $header_height;
+    background-position: fixed;
+    height: 100vh;
+    img,
+    .banner-content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .banner-content {
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.644), rgba(15, 41, 5, 0.349));
+        .checky-content {
+            input {
+                border: none;
+                height: 100%;
+                outline: none;
+            }
+            width: 100%;
+            height: 100%;
+            @include flex(row, center, center);
+            &>* {
+                @include flex(column, center, center);
+                height: 150px;
+                width: 200px;
+                background-color: white;
+                h4 {
+                    color: rgba(0, 0, 0, 0.616);
+                    padding-top: 3rem;
+                }
+                 :after {
+                    content: "";
+                    height: 80%;
+                    width: 2px;
+                    background-color: rgba($header_color, 0.4);
+                    margin-bottom: 2rem;
+                    margin-right: 1rem;
+                }
+            }
+            .avalible {
+                background-color: $header_color;
+                @include transation(0.4s);
+                &:hover {
+                    opacity: 0.8;
+                    cursor: pointer;
+                    a {
+                        color: lightblue;
+                    }
+                }
+                a {
+                    @include transation(0.4s);
+                    color: white;
+                    padding: 0 0 0 1rem;
+                }
+            }
+            .guests {
+                .guests_count {
+                    @include flex(row, center, center);
+                    padding: 1rem;
+                    input {
+                        width: 40px;
+                        font-size: 2rem;
+                    }
+                    .updown {
+                        position: relative;
+                        top: 1rem;
+                        @include flex(column, center, center);
+                        &>* {
+                            color: rgba(32, 36, 36, 0.575);
+                            @include transation(0.2s);
+                            &:hover {
+                                transform: scale(1.1);
+                                z-index: 1;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include medi {
+    .banner {
+        margin-top: $header_height-mobile;
+        .banner-content {
+            .checky-content {
+                flex-direction: column;
+                >* {
+                     :after {
+                        display: none;
+                    }
+                }
+                &>.guests>.guests_count>.updown {
+                    top: 0;
+                }
+            }
+        }
+    }
+}
